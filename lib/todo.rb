@@ -47,7 +47,11 @@ class Todo
   end
 
   def mark_todo
+    puts "Which todo have you finished?"
+    answer = get_input.to_i
+    @todos[answer - 1]["completed"] = "yes"
   end
+
 
   def todos
     @todos

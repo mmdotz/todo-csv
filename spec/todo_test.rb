@@ -8,7 +8,7 @@ class TodoTest < MiniTest::Test
   def todo_setup
     $input  = [] # Reset all input between tests
     $output = [] # Reset all messages between tests
-    @todo = Todo.new('test_todos.csv') # Given
+    @todo = Todo.new('test_todos.csv') # Given #I had to remove the spec dir reference to run
   end
 
   def test_view_todos_prints_unfinished_header
@@ -60,10 +60,10 @@ class TodoTest < MiniTest::Test
    assert_equal("Which todo have you finished?", $output.last, "The last message was not asking what todo they have finished")
   end
 
-  #def test_mark_todo_changes_todo
-  #  todo_setup # Given
-  #  $input.push('1')
-  #  @todo.mark_todo
-  #  assert_equal("finish homework,yes\n", @todo.todos[0].to_s, "The first todo in todos was not 'finish homework'")
-  #end
+  def test_mark_todo_changes_todo
+   todo_setup # Given
+   $input.push('1')
+   @todo.mark_todo
+   assert_equal("finish homework,yes\n", @todo.todos[0].to_s, "The first todo in todos was not 'finish homework'")
+  end
 end
