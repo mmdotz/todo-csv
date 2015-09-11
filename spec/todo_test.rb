@@ -8,7 +8,7 @@ class TodoTest < MiniTest::Test
   def todo_setup
     $input  = [] # Reset all input between tests
     $output = [] # Reset all messages between tests
-    @todo = Todo.new('test_todos.csv') # Given #I had to remove the spec dir reference to run
+    @todo = Todo.new('spec/test_todos.csv') # Given #I had to remove the spec dir reference to run
   end
 
   def test_view_todos_prints_unfinished_header

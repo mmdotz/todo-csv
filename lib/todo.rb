@@ -29,27 +29,33 @@ class Todo
         puts "\a"
         puts "Not a valid choice"
       end
+      view_todos
     end
   end
 
-  def view_todos
+  def view_todos  #working
     puts "Unfinished"
     @todos.each_with_index do |todo, index|
       puts "#{index + 1}) #{todo["name"]}"
     end
     puts "Completed"
+    @todos.each_with_index do |todo, index|
+      puts "#{index + 1}) #{todo["completed"]}"
+    end
   end
 
-  def add_todo
+  def add_todo #adding to csv, not printing to screen unfinished, only adding placemarkers
     puts "Name of Todo > "
-    response = get_input  #get input
-    @todos.push("#{get_input},no\n") # all input is pushed but have to add ",no"
+    # response = get_input  #get input
+    @todos << [get_input, "no"] # all input is pushed but have to add ",no"
+    # todos.csv()
   end
 
-  def mark_todo
+  def mark_todo #working
     puts "Which todo have you finished?"
     answer = get_input.to_i
-    @todos[answer - 1]["completed"] = "yes"
+    @todos[answer - 1]["completed"] = "yes" #saving a random "yes"
+    save!
   end
 
 
